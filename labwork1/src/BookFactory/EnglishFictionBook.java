@@ -4,7 +4,7 @@ package BookFactory;
  *
  * @author ivahn
  */
-public class EnglishFictionBook extends EnglishBook implements FictionBook {
+public class EnglishFictionBook implements FictionBook {
     private String title;
     private String author;
     private String artist;
