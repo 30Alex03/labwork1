@@ -4,7 +4,7 @@ package Person;
  *
  * @author ivahno
  */
-public class Teacher extends PersonBuilder{
+public class TeacherBuilder extends PersonBuilder{
      @Override
     public void buildName() {
         person.setName(ng.randomName());
