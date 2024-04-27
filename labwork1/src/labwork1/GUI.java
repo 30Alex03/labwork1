@@ -4,7 +4,8 @@
  */
 package labwork1;
 
-import BookFactory.Book;
+import BookFactory.EducationBook;
+import BookFactory.FictionBook;
 import java.util.ArrayList;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
@@ -146,10 +147,12 @@ public class GUI extends javax.swing.JFrame {
     
     private DefaultMutableTreeNode createNode() {
         List list = new List();
-        DefaultMutableTreeNode node = new DefaultMutableTreeNode(list.getUser().fullName());
-        ArrayList<Book> bookList = list.getBookList();
+        DefaultMutableTreeNode node = new DefaultMutableTreeNode(list.getPerson().fullName());
+        ArrayList<EducationBook> EducationbookList = list.getEducationBookList();
+        ArrayList<FictionBook> FictionbookList = list.getFictionBookList();
         for (int i = 0; i < list.getNumberOfBooks(); i++) {
-            node.add(new DefaultMutableTreeNode(bookList.get(i).getTitle()));
+            node.add(new DefaultMutableTreeNode(EducationbookList.get(i).getTitle()));
+            node.add(new DefaultMutableTreeNode(FictionbookList.get(i).getTitle()));
         }
         return node;
     }

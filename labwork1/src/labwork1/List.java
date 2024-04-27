@@ -1,6 +1,7 @@
 package labwork1;
 
-import BookFactory.Book;
+import BookFactory.EducationBook;
+import BookFactory.FictionBook;
 import BookFactory.BookFactory;
 import BookFactory.RussianBookFactory;
 import BookFactory.EnglishBookFactory;
@@ -11,8 +12,8 @@ import BookFactory.EnglishEducationBook;
 import java.util.ArrayList;
 import java.util.Random;
 import Person.Director;
-import Person.Student;
-import Person.Teacher;
+import Person.StudentBuilder;
+import Person.TeacherBuilder;
 import Person.Person;
 import Person.PersonBuilder;
 
@@ -22,13 +23,15 @@ import Person.PersonBuilder;
  */
 public class List {
     private Person person;
-    private ArrayList<Book> bookList;
+    private ArrayList<EducationBook> EducationbookList;
+    private ArrayList<FictionBook> FictionbookList;
     private int numberOfBooks;
     private Random random;
     
     public List() {
         random = new Random();
-        bookList = new ArrayList<>();
+        EducationbookList = new ArrayList<>();
+        FictionbookList = new ArrayList<>();        
         setPerson();
         setBookList();
     }
@@ -38,9 +41,9 @@ public class List {
         Director director = new Director();
         PersonBuilder personBuilder = switch (n) {
             case 0 ->
-                new Student();
+                new StudentBuilder();
             case 1 ->
-                new Teacher();
+                new TeacherBuilder();
             default ->
                 null;
         };
@@ -57,16 +60,16 @@ public class List {
             int n = random.nextInt(4);
             switch (n) {
                 case 0 -> {
-                    bookList.add(EngBookFactory.createFictionBook());
+                    FictionbookList.add(EngBookFactory.createFictionBook());
                 }
                 case 1 -> {
-                    bookList.add(EngBookFactory.createEducationBook());
+                    EducationbookList.add(EngBookFactory.createEducationBook());
                 }
                 case 2 -> {
-                    bookList.add(RusBookFactory.createFictionBook());
+                    FictionbookList.add(RusBookFactory.createFictionBook());
                 }
                 case 3 -> {
-                    bookList.add(RusBookFactory.createEducationBook());
+                    EducationbookList.add(RusBookFactory.createEducationBook());
                 }
                 default -> {
                 }
@@ -74,14 +77,18 @@ public class List {
         }
     }
 
-    public Person getUser() {
+    public Person getPerson() {
         return person;
     }
 
-    public ArrayList<Book> getBookList() {
-        return bookList;
+    public ArrayList<EducationBook> getEducationBookList() {
+        return EducationbookList;
     }
-
+    
+    public ArrayList<FictionBook> getFictionBookList() {
+        return FictionbookList;
+    }
+    
     public int getNumberOfBooks() {
         return numberOfBooks;
     }

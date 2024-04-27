@@ -4,6 +4,6 @@ package BookFactory;
  *
  * @author ivahn
  */
-interface FictionBook {
+public interface FictionBook {
     String getTitle();
 }
