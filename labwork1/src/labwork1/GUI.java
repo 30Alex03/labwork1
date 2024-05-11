@@ -148,12 +148,26 @@ public class GUI extends javax.swing.JFrame {
     private DefaultMutableTreeNode createNode() {
         List list = new List();
         DefaultMutableTreeNode node = new DefaultMutableTreeNode(list.getPerson().fullName());
-        ArrayList<EducationBook> EducationbookList = list.getEducationBookList();
-        ArrayList<FictionBook> FictionbookList = list.getFictionBookList();
+        //ArrayList<EducationBook> EducationbookList = list.getEducationBookList();
+        //ArrayList<FictionBook> FictionbookList = list.getFictionBookList();
+        for (FictionBook fictionBook : list.getFictionBookList()) {
+            node.add(new DefaultMutableTreeNode(fictionBook.getTitle()));
+        }
+        
+        for (EducationBook educationBook : list.getEducationBookList()) {
+            node.add(new DefaultMutableTreeNode(educationBook.getTitle()));
+        }
+        /*
         for (int i = 0; i < list.getNumberOfBooks(); i++) {
             node.add(new DefaultMutableTreeNode(EducationbookList.get(i).getTitle()));
             node.add(new DefaultMutableTreeNode(FictionbookList.get(i).getTitle()));
         }
+        
+        for (int i = 0; i < list.getNumberOfBooks(); i++) {
+            node.add(new DefaultMutableTreeNode(EducationbookList.get(i).getTitle()));
+            node.add(new DefaultMutableTreeNode(FictionbookList.get(i).getTitle()));
+        }
+        */
         return node;
     }
 
